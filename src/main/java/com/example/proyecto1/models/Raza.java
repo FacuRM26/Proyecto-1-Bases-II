@@ -1,6 +1,14 @@
-package com.example.proyecto1;
+package com.example.proyecto1.models;
 
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "raza")
 public class Raza {
+    @Id
+    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nombre;
     private String habitat;

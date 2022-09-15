@@ -1,6 +1,13 @@
-package com.example.proyecto1;
+package com.example.proyecto1.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "Juego")
 public class Juego {
+    @Id
+    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nombre,consolas,fecha_publicacion,linea_cronologica;
 
