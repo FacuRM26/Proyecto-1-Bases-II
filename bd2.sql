@@ -84,4 +84,16 @@ Begin
     Where  a.personaje_id =  b.id
     AND A.juego_id= P_Juego;
 End Pr_Consulta_Personajes_X_Juego;
-    
+
+
+INSERT INTO "SYSTEM"."JUEGO" (NOMBRE, CONSOLAS, FECHA_PUBLICACION, LINEA_CRONOLOGICA) VALUES ('The Legend of Zelda: Majora''s Mask', 'Nintendo 64,Nintndo 3ds', TO_DATE('2000-04-27 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Heroe Triunfante');
+INSERT INTO "SYSTEM"."JUEGO" (NOMBRE, CONSOLAS, FECHA_PUBLICACION, LINEA_CRONOLOGICA) VALUES ('The Legend of Zelda: The Minish Cap', 'GBA,Nintendo 3DS', TO_DATE('2004-09-04 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Linea Principal');
+INSERT INTO "SYSTEM"."JUEGO" (NOMBRE, CONSOLAS, FECHA_PUBLICACION, LINEA_CRONOLOGICA) VALUES ('The Legend of Zelda: A Link Between Worlds', 'Nintendo 3DS', TO_DATE('2013-10-26 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Fracaso del Heroe');
+
+INSERT INTO "SYSTEM"."RAZA" (NOMBRE, HABITAT, ETIMOLOGIA) VALUES ('Minish', 'Bosque Minish', 'La palabra "minish" es una palabra arcaica que significa disminuir o atenuar');
+INSERT INTO "SYSTEM"."RAZA" (NOMBRE, HABITAT, ETIMOLOGIA) VALUES ('Goron', 'Hyrule', 'El nombre Goron procede de la onomatopeya japonesa Goro goro, usada para expresar el sonido de una roca rodando, lo que hace referencia a la forma deLos Goron de rodar como una roca y a sus propiedades de roca.');
+
+INSERT INTO "SYSTEM"."PERSONAJE" (NOMBRE, GENERO, CIUDAD_RESIDENCIA, FAMILIA, ENEMIGO, RAZA_ID) VALUES ('Daruk', 'Masculino', 'Ciudad Goron', 'Yunobo', '0', '42');
+INSERT INTO "SYSTEM"."PERSONAJE" (NOMBRE, GENERO, CIUDAD_RESIDENCIA, FAMILIA, ENEMIGO, RAZA_ID) VALUES ('Princesa Ruto', 'Femenino', 'Lago Hylia', 'Rey Zoro XVI', '0', '21');
+INSERT INTO "SYSTEM"."PERSONAJE" (NOMBRE, GENERO, CIUDAD_RESIDENCIA, FAMILIA, ENEMIGO, RAZA_ID) VALUES ('Ezero', 'Masculino', 'Mundo Minish', 'Desconocido', '0', '41');
+  
