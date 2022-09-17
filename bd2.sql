@@ -67,4 +67,21 @@ select * from juego;
 select * from personaje_juego;
 select * from raza_juego;
 commit;
+
+ALTER TABLE personaje 
+ADD fecha_registro date;
+
+create or replace NONEDITIONABLE TRIGGER TRG_FECHA_PERSONAJE 
+BEFORE INSERT ON PERSONAJE FOR EACH ROW
+BEGIN
+   :NEW.FECHA_REGISTRO := SYSDATE;
+END;
+
+create or replace NONEDITIONABLE Procedure Pr_Consulta_Personajes_X_Juego (P_Juego Number, C_Personajes Out Sys_Refcursor) As 
+Begin
+
+    Open C_Personajes For Select A.personaje_id, b.nombre From PERSONAJE_JUEGO A, PERSONAJE B
+    Where  a.personaje_id =  b.id
+    AND A.juego_id= P_Juego;
+End Pr_Consulta_Personajes_X_Juego;
     
