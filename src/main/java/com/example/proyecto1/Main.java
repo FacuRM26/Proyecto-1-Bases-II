@@ -16,17 +16,16 @@ import java.util.List;
 
 
 @SpringBootApplication
-public class Main implements CommandLineRunner {
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
+public class Main {
+//    @Autowired
+//   private JdbcTemplate jdbcTemplate;
     @Autowired
     //private StudentRepository studentRepository;
     public static void main(String[] args) {
         SpringApplication.run(Main.class, args);
     }
-
-    @Override
     public void run(String... args) throws Exception {
+
 //        String sql = "SELECT * FROM Personaje";
 //        List<Personaje> personaje = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Personaje.class));
 //        personaje.forEach(System.out::println);
@@ -77,29 +76,29 @@ public class Main implements CommandLineRunner {
 //        }
 
         //Obtener todos los personajes que pertenecen al juego con ese ID
-        CallableStatement stmt= jdbcTemplate.getDataSource().getConnection().prepareCall("{?=call Fc_Consulta_Personajes_X_Juego(?)}");
-        String result =getResultSet(stmt, 4);
-        System.out.println(result.substring(0,result.length()-2));
-
-        //Obtener todos los personajes que pertenecen a la raza con ese ID
-        stmt= jdbcTemplate.getDataSource().getConnection().prepareCall("{?=call Fc_Consulta_Personaje_X_Raza(?)}");
-        result =getResultSet(stmt, 4);
-        System.out.println(result.substring(0,result.length()-2));
-
-        //Obtener todos los juegos que pertenecen al personaje con ese ID
-        stmt= jdbcTemplate.getDataSource().getConnection().prepareCall("{?=call Fc_Consulta_Juego_X_Personaje(?)}");
-        result =getResultSet(stmt, 23);
-        System.out.println(result.substring(0,result.length()-2));
-
-        //Obtener todos los juegos que pertenecen a la raza con ese ID
-        stmt= jdbcTemplate.getDataSource().getConnection().prepareCall("{?=call Fc_Consulta_Juego_X_Raza(?)}");
-        result =getResultSet(stmt, 4);
-        System.out.println(result.substring(0,result.length()-2));
-
-        //Obtener todas las razas que pertenecen al juego con ese id
-        stmt= jdbcTemplate.getDataSource().getConnection().prepareCall("{?=call Fc_Consulta_Raza_X_Juego(?)}");
-        result =getResultSet(stmt, 2);
-        System.out.println(result.substring(0,result.length()-2));
+//        CallableStatement stmt= jdbcTemplate.getDataSource().getConnection().prepareCall("{?=call Fc_Consulta_Personajes_X_Juego(?)}");
+//        String result =getResultSet(stmt, 4);
+//        System.out.println(result.substring(0,result.length()-2));
+//
+//        //Obtener todos los personajes que pertenecen a la raza con ese ID
+//        stmt= jdbcTemplate.getDataSource().getConnection().prepareCall("{?=call Fc_Consulta_Personaje_X_Raza(?)}");
+//        result =getResultSet(stmt, 4);
+//        System.out.println(result.substring(0,result.length()-2));
+//
+//        //Obtener todos los juegos que pertenecen al personaje con ese ID
+//        stmt= jdbcTemplate.getDataSource().getConnection().prepareCall("{?=call Fc_Consulta_Juego_X_Personaje(?)}");
+//        result =getResultSet(stmt, 23);
+//        System.out.println(result.substring(0,result.length()-2));
+//
+//        //Obtener todos los juegos que pertenecen a la raza con ese ID
+//        stmt= jdbcTemplate.getDataSource().getConnection().prepareCall("{?=call Fc_Consulta_Juego_X_Raza(?)}");
+//        result =getResultSet(stmt, 4);
+//        System.out.println(result.substring(0,result.length()-2));
+//
+//        //Obtener todas las razas que pertenecen al juego con ese id
+//        stmt= jdbcTemplate.getDataSource().getConnection().prepareCall("{?=call Fc_Consulta_Raza_X_Juego(?)}");
+//        result =getResultSet(stmt, 2);
+//        System.out.println(result.substring(0,result.length()-2));
 
     }
 
