@@ -82,7 +82,7 @@ Begin
 
     Open C_Personajes For Select A.personaje_id, b.nombre From PERSONAJE_JUEGO A, PERSONAJE B
     Where  a.personaje_id =  b.id
-    AND A.juego_id= P_Juego;
+    AND A.juego_id= P_Juego ;
 End Pr_Consulta_Personajes_X_Juego;
 
 
@@ -96,4 +96,106 @@ INSERT INTO "SYSTEM"."RAZA" (NOMBRE, HABITAT, ETIMOLOGIA) VALUES ('Goron', 'Hyru
 INSERT INTO "SYSTEM"."PERSONAJE" (NOMBRE, GENERO, CIUDAD_RESIDENCIA, FAMILIA, ENEMIGO, RAZA_ID) VALUES ('Daruk', 'Masculino', 'Ciudad Goron', 'Yunobo', '0', '42');
 INSERT INTO "SYSTEM"."PERSONAJE" (NOMBRE, GENERO, CIUDAD_RESIDENCIA, FAMILIA, ENEMIGO, RAZA_ID) VALUES ('Princesa Ruto', 'Femenino', 'Lago Hylia', 'Rey Zoro XVI', '0', '21');
 INSERT INTO "SYSTEM"."PERSONAJE" (NOMBRE, GENERO, CIUDAD_RESIDENCIA, FAMILIA, ENEMIGO, RAZA_ID) VALUES ('Ezero', 'Masculino', 'Mundo Minish', 'Desconocido', '0', '41');
+commit;
+
+create or replace Function Fc_Consulta_Personajes_X_Juego (P_Juego Number) return Sys_Refcursor is
+    type ref_cursor is ref cursor;
+    C_Personajes ref_cursor;
+Begin
+    Open C_Personajes For Select b.nombre From PERSONAJE_JUEGO A, PERSONAJE B
+    Where  a.personaje_id =  b.id
+    AND A.juego_id= P_Juego ;
+    return C_Personajes;
+End Fc_Consulta_Personajes_X_Juego;
+
+
+
+
+create or replace Function Fc_Consulta_Personaje_X_Raza (P_Raza Number) return Sys_Refcursor is
+    type ref_cursor is ref cursor;
+    C_Personajes ref_cursor;
+Begin
+    Open C_Personajes For Select b.nombre From PERSONAJE B
+    Where  b.raza_id = P_Raza;
+    return C_Personajes;
+End Fc_Consulta_Personaje_X_Raza;
+
+
+create or replace Function Fc_Consulta_Juego_X_Personaje (P_personaje Number) return Sys_Refcursor is
+    type ref_cursor is ref cursor;
+    C_Juegos ref_cursor;
+Begin
+    Open C_Juegos For Select b.nombre From PERSONAJE_JUEGO A, Juego B
+    Where  a.juego_id =  b.id
+    AND A.personaje_id= P_personaje ;
+    return C_Juegos;
+End Fc_Consulta_Juego_X_Personaje;
+
+
+
+create or replace Function Fc_Consulta_Juego_X_Raza (P_raza Number) return Sys_Refcursor is
+    type ref_cursor is ref cursor;
+    C_Juegos ref_cursor;
+Begin
+    Open C_Juegos For Select b.nombre From Raza_JUEGO A, Juego B
+    Where  a.juego_id =  b.id
+    AND A.raza_id= P_raza ;
+    return C_Juegos;
+End Fc_Consulta_Juego_X_Raza ;
+
+
+
+create or replace Function Fc_Consulta_Raza_X_Juego (P_Juego Number) return Sys_Refcursor is
+    type ref_cursor is ref cursor;
+    C_Juegos ref_cursor;
+Begin
+    Open C_Juegos For Select b.nombre From Raza_JUEGO A, Raza B
+    Where  a.raza_id =  b.id
+    AND A.juego_id= P_Juego ;
+    return C_Juegos;
+End Fc_Consulta_Raza_X_Juego;
+
+
+ALTER TABLE personaje 
+ADD fecha_registro date;
+
+ALTER TABLE raza 
+ADD fecha_registro date;
+
+ALTER TABLE juego
+ADD fecha_registro date;
+
+create or replace NONEDITIONABLE TRIGGER TRG_FECHA_JUEGO
+BEFORE INSERT ON JUEGO FOR EACH ROW
+BEGIN
+   :NEW.FECHA_REGISTRO := SYSDATE;
+END;
+
+create or replace NONEDITIONABLE TRIGGER TRG_FECHA_RAZA 
+BEFORE INSERT ON Raza FOR EACH ROW
+BEGIN
+   :NEW.FECHA_REGISTRO := SYSDATE;
+END;
+
+
+
+
+
+DECLARE
+  P_JUEGO NUMBER;
+  C_PERSONAJES Sys_Refcursor;
+  v_id_personaje number;
+  V_NOM_PERSONAJE varchar2(50);
+BEGIN
+  P_JUEGO := 4;
+
+  C_PERSONAJES :=Fc_Consulta_Personaje_X_Raza(4);
   
+  
+   LOOP
+      FETCH C_PERSONAJES INTO V_NOM_PERSONAJE;
+      EXIT WHEN C_PERSONAJES%NOTFOUND;
+       dbms_output.put_line('Nombre personaje: '||V_NOM_PERSONAJE );
+   END LOOP;
+   end;
+commit;
