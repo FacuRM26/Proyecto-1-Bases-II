@@ -16,19 +16,20 @@ import java.util.List;
 
 
 @SpringBootApplication
-public class Main {
-//    @Autowired
-//   private JdbcTemplate jdbcTemplate;
+public class Main implements CommandLineRunner {
+    @Autowired
+     private JdbcTemplate jdbcTemplate;
     @Autowired
     //private StudentRepository studentRepository;
     public static void main(String[] args) {
         SpringApplication.run(Main.class, args);
     }
+    @Override
     public void run(String... args) throws Exception {
 
-//        String sql = "SELECT * FROM Personaje";
-//        List<Personaje> personaje = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Personaje.class));
-//        personaje.forEach(System.out::println);
+        String sql = "SELECT * FROM Personaje";
+        List<Personaje> personaje = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Personaje.class));
+        personaje.forEach(System.out::println);
 //
 //        String sql2 = "SELECT * FROM Raza";
 //        List<Raza> raza = jdbcTemplate.query(sql2, BeanPropertyRowMapper.newInstance(Raza.class));
@@ -60,11 +61,10 @@ public class Main {
 //        String sql8 = "UPDATE Personaje SET nombre = ? WHERE id = ?";
 //        jdbcTemplate.update(sql8, "Princesa Zelda", 23);
 
-//       //call function
-        //crear funcion
 
         //Obtener todos los personajes que pertenecen al juego con ese ID
 //        CallableStatement stmt= jdbcTemplate.getDataSource().getConnection().prepareCall("{?=call Fc_Consulta_Personajes_X_Juego(?)}");
+
 //        stmt.registerOutParameter(1,Types.REF_CURSOR);
 //        stmt.setInt(2, 4);
 //        stmt.execute();
@@ -99,8 +99,16 @@ public class Main {
 //        stmt= jdbcTemplate.getDataSource().getConnection().prepareCall("{?=call Fc_Consulta_Raza_X_Juego(?)}");
 //        result =getResultSet(stmt, 2);
 //        System.out.println(result.substring(0,result.length()-2));
-
+        //Procedimiento almacenado
+        //llamar procedimiento almacenado que recibe un id y un string
+        String sql8 = "{call Pr_Personaje_Juego(?,?)}";
+        jdbcTemplate.update(sql8, 53, "The Legend of Zelda: The Minish Cap");
+        sql8="{call Pr_Juego_Raza(?,?)}";
+        jdbcTemplate.update(sql8, 21, "Zora,Goron,Hyliano");
+        sql8="{call Pr_Juego_Personaje(?,?)}";
+        jdbcTemplate.update(sql8, 22, "Ezero");
     }
+
 
     private String getResultSet(CallableStatement stmt,int Id ) throws Exception{
         stmt.registerOutParameter(1, Types.REF_CURSOR);
