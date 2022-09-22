@@ -11,3 +11,4 @@ function configButton(){
 function hideButton(){
     document.getElementById("panel").style.display = "none";
 }
+

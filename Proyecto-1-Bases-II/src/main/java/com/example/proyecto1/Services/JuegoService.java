@@ -26,4 +26,11 @@ public class JuegoService {
         juegoRepository.deleteById(id);
     }
 
+    public Juego actualizarJuego(Juego juego){
+        return juegoRepository.save(juego);
+    }
+
+    public Juego buscarJuego(int id){
+        return  juegoRepository.getReferenceById(id);
+    }
 }

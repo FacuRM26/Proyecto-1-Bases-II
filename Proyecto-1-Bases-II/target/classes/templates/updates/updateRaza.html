@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/adminT.css">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <script src="https://kit.fontawesome.com/92129222ce.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!--Añadir personaje-->
+<div class="panelV" id="panel">
+    <div class="addItem">
+        <h1>Actualizar personaje</h1>
+        <div class="containerScroll">
+            <form action="#" th:action="@{/actualizarraza}" th:object="${Raza}" method="post" name="Modificar">
+                <fieldset>
+                    <legend class="legend">Información del personaje</legend>
+                    <div class="entry">
+                        <label>Nombre: </label>
+                        <input type="text" autocomplete="off" for="Agregar" name="nombre" th:value="${dato.getNombre()}">
+                    </div>
+                    <div class="entry">
+                        <label>Habitat: </label>
+                        <input type="text" autocomplete="off"  for="Agregar" name="habitat" th:value="${dato.getHabitat()}">
+                    </div>
+                    <div class="entry">
+                        <label>Etimologia: </label>
+                        <input type="text" autocomplete="off" for="Agregar" name="etimologia" th:value="${dato.getEtimologia()}">
+                    </div>
+
+                </fieldset>
+
+                <fieldset class="juegos">
+                    <legend class="legend">
+                        Juegos
+                    </legend>
+                    <div class="gameEntry" th:each="juego:${juegos}">
+                        <input type="checkbox" name="" value="juegos">
+                        <p th:text="${juego.getNombre()}"></p>
+                    </div>
+
+                </fieldset>
+        </div>
+        <div class="botonContainer">
+            <a class="button eliminar" th:href="@{/admin/razas}">Cancelar</a>
+            <button type="submit" class="button add" for="Modificar" th:value="${dato.getId()}" name="id">Modificar</button>
+        </div>
+        </form>
+    </div>
+
+</div>
+
+<script src="../js/script.js"></script>
+</body>
+</html>

@@ -4,6 +4,7 @@ import com.example.proyecto1.Proyecto1Application;
 import com.example.proyecto1.Repositories.RazaRepository;
 import com.example.proyecto1.Services.PersonajeService;
 import com.example.proyecto1.Services.RazaService;
+import com.example.proyecto1.models.Juego;
 import com.example.proyecto1.models.Raza;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -34,6 +35,13 @@ public class RazaController {
         return mav;
     }
 
+    /*Ver ficha de Raza*/
+    @GetMapping("/raza")
+    public ModelAndView personaje(){
+        ModelAndView mav = new ModelAndView(("individual/RazaView"));
+        return mav;
+    }
+
     /*Crear una raza*/
     @PostMapping("/guardarraza")
     public String guardarRaza(@ModelAttribute Raza raza){
@@ -44,6 +52,12 @@ public class RazaController {
     @PostMapping("/eliminarraza")
     public String eliminarPersonaje(@RequestParam Integer id){
         razaService.borrarRaza(id);
+        return "redirect:admin/razas";
+    }
+
+    @PostMapping("/actualizarraza")
+    public String actualizarRaza(@ModelAttribute Raza raza){
+        razaService.actualizarRaza(raza);
         return "redirect:admin/razas";
     }
 }

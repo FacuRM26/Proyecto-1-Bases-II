@@ -2,6 +2,7 @@ package com.example.proyecto1.Services;
 
 
 import com.example.proyecto1.Repositories.PersonajeRepository;
+import com.example.proyecto1.models.Juego;
 import com.example.proyecto1.models.Personaje;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,5 +24,13 @@ public class PersonajeService {
 
     public void borrarPersonaje(int id){
         personajeRepository.deleteById(id);
+    }
+
+    public Personaje actualizarPersonaje(Personaje personaje){
+        return personajeRepository.save(personaje);
+    }
+
+    public Personaje buscarPersonaje(int id){
+        return  personajeRepository.getReferenceById(id);
     }
 }

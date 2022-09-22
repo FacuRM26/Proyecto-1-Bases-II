@@ -32,6 +32,13 @@ public class JuegoController {
         return mav;
     }
 
+    /*Ver ficha de Juego*/
+    @GetMapping("/juego")
+    public ModelAndView personaje(){
+        ModelAndView mav = new ModelAndView(("individual/JuegoView"));
+        return mav;
+    }
+
     /*Crear un personaje*/
     @PostMapping("/guardarjuego")
     public String guardarJuego(@ModelAttribute Juego juego){
@@ -45,5 +52,9 @@ public class JuegoController {
         return "redirect:admin/juegos";
     }
 
-
+    @PostMapping("/actualizarjuego")
+    public String actualizarJuego(@ModelAttribute Juego juego){
+        juegoService.actualizarJuego(juego);
+        return "redirect:admin/juegos";
+    }
 }

@@ -2,6 +2,7 @@ package com.example.proyecto1.Services;
 
 
 import com.example.proyecto1.Repositories.RazaRepository;
+import com.example.proyecto1.models.Juego;
 import com.example.proyecto1.models.Personaje;
 import com.example.proyecto1.models.Raza;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,5 +25,13 @@ public class RazaService {
 
     public void borrarRaza(int id){
         razaRepository.deleteById(id);
+    }
+
+    public Raza actualizarRaza(Raza raza){
+        return razaRepository.save(raza);
+    }
+
+    public Raza buscarRaza(int id){
+        return  razaRepository.getReferenceById(id);
     }
 }

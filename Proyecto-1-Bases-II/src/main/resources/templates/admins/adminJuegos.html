@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/adminT.css">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <script src="https://kit.fontawesome.com/92129222ce.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!--Añadir personaje-->
+    <div class="panel" id="panel">
+        <div class="addItem">
+            <h1>Agregar personaje</h1>
+            <div class="containerScroll">
+                <form action="#" th:action="@{/guardarjuego}" th:object="${Juego}" method="post" name="Agregar">
+                    <fieldset>
+                        <legend class="legend">Información del personaje</legend>
+                        <div class="entry">
+                            <label>Nombre: </label>
+                            <input type="text" autocomplete="off" for="Agregar" name="nombre">
+                        </div>
+                        <div class="entry">
+                            <label>Consolas: </label>
+                            <input type="text" autocomplete="off"  for="Agregar" name="consolas">
+                        </div>
+                        <div class="entry">
+                            <label>fecha_publicacion: </label>
+                            <input type="date" autocomplete="off" for="Agregar" name="fecha_publicacion">
+                        </div>
+                        <div class="entry">
+                            <label>linea_cronologica: </label>
+                            <input type="text" autocomplete="off" for="Agregar" name="linea_cronologica">
+                        </div>
+                    </fieldset>
+                    </div>
+                    <div class="botonContainer">
+                        <div class="button eliminar" onclick="hideButton()">Cancelar</div>
+                        <input type="submit" class="button add" for="Agregar" value="Agregar">
+                    </div>
+                </form>
+        </div>
+    </div>
+
+
+    <div class="head">
+        <h1>Administrador</h1>
+        <div class="menu">
+            <a th:href="@{/admin/personajes}">Personajes</a>
+            <a th:href="@{/admin/razas}">Razas</a>
+            <a th:href="@{/admin/juegos}">Juegos</a>
+            <a class="log button" th:href="@{/juegos}">Log out</a>
+        </div>
+    </div>
+
+    <div class="opciones">
+        <div class="buscar">
+            <label>Buscar Personage: </label><input type="text " placeholder="Ingrese el nombre">
+        </div>
+        <div class="controles">
+            <!--<i class="fa-solid fa-border-all"></i>
+            <i class="fa-solid fa-list"></i>-->
+            <div class="button add" onclick="configButton()">Añadir</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="register" th:each="Dato : ${item}">
+            <div class="registerInfo">
+                <p th:text="'Nombre: ' + ${Dato.getNombre()}"></p>
+                <p th:text="'Consolas: ' + ${Dato.getConsolas()}"></p>
+                <p th:text="'Fecha publicación: ' + ${Dato.getFecha_publicacion()}"></p>
+                <p th:text="'Linea_cronologica: ' + ${Dato.getLinea_cronologica()}"></p>
+            </div>
+            <div class="adminB">
+                <form th:action="@{/modificarjuego}" method="post" name="modificar">
+                    <button type="submit" for="modificar" name="id" class="button editar" th:value="${Dato.getId()}">Editar</button>
+                </form>
+                <form th:action="@{/eliminarjuego}" th:object="${Juego}" method="post" name="eliminar">
+                    <button type="submit" for="eliminar" name="id" class="button eliminar" th:value="${Dato.getId()}">Eliminar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="../js/script.js"></script>
+</body>
+</html>

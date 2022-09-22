@@ -1,0 +1,315 @@
+a{
+    text-decoration:none;
+}
+body{
+    width:100%;
+    height:100vh;
+}
+
+.head{
+    width:100%;
+    height:8vh;
+    padding:0 2%;
+    background-color:#363E54;
+    display:flex;
+    justify-content:space-between;
+    align-items:center
+}
+
+.head h1{
+    color:#ffffff;
+    font-size:3rem;
+}
+
+.head .menu{
+    width:30%;
+    height:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.head .menu a{
+    text-decoration:none;
+    color:#f1f1f1;
+    font-size:2rem;
+    font-weight:500;
+}
+
+.button{
+    width:auto;
+    height:auto;
+    padding:1rem 2rem;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:2rem;
+    border-radius:.5rem;
+    cursor:pointer;
+    border:none;
+}
+
+.head .menu .log{
+    background-color:#D96255;
+    color:#ffffff;
+    font-weight:500;
+}
+
+.head .menu .log:hover{
+    background-color:#A64B41;
+}
+
+.opciones{
+   width:100%;
+   height:8vh;
+   margin-top:2vh;
+   padding:0 2%;
+   display:flex;
+   justify-content:space-between;
+   align-items:center;
+   background-color:#fff;
+}
+
+.buscar{
+    width:40%;
+    height:50%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.buscar label{
+    font-size:2rem;
+    color:#696969;
+}
+
+.buscar input{
+    width:60%;
+    height:100%;
+    border:1px solid #696969;
+    border-radius:1rem;
+    font-size:2rem;
+    padding:0 1rem;
+    outline:none;
+}
+
+/*Botones*/
+
+.add{
+    background-color:#84C263;
+    color:#ffffff;
+    font-weight:500;
+}
+
+.editar{
+    background-color:#42AECF;
+    color:#ffffff;
+    font-weight:500;
+    margin:0 1rem;
+}
+
+.eliminar{
+    background-color:#D96255;
+    color:#ffffff;
+    font-weight:500;
+    margin:0 1rem;
+}
+
+.container{
+    width:100%;
+    height:74vh;
+    margin:4vh auto 0 auto;
+    padding:0 2%;
+    display:flex;
+    flex-direction:column;
+}
+
+.register{
+    background-color:#E3E3E3;
+    width:100%;
+    height:6rem;
+    padding:0 2%;
+    border-radius:.5rem;
+    margin:.2rem auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.registerInfo{
+    width:80%;
+    height:50%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+}
+
+.registerInfo p{
+    font-size:2rem;
+    width:24%;
+    max-width:25%;
+    padding:0 2rem;
+    overflow-x:hidden;
+    white-space:nowrap;
+    text-align:left;
+}
+
+.adminB{
+    width:12%;
+    height:60%;
+    display:flex;
+    justify-content:space-around;
+}
+
+
+/*Añadir personajes*/
+
+.panel{
+    z-index:100;
+    width:100%;
+    height:100vh;
+    position:fixed;
+    background-color:#010103B5;
+    display:none;
+    justify-content:center;
+    align-items:center;
+}
+
+.panelV{
+    width:100%;
+    height:100vh;
+    position:fixed;
+    background-color:#010103B5;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.addItem{
+    width:40%;
+    height:85%;
+    background-color:#F4F0F5;
+    border-radius:1rem;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-evenly;
+    align-items:center;
+    padding:2%;
+    overflow-y:auto;
+}
+
+.addItem h1{
+    color:#575757;
+    font-size:3rem;
+}
+
+.addItem fieldset .entry{
+    width:100%;
+    height:auto;
+    padding:1% 2%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin:.2rem auto;
+}
+
+.entry label{
+    color:#575757;
+    font-size:2rem;
+}
+
+.entry input{
+    width:50%;
+    height:100%;
+    border:1px solid #696969;
+    border-radius:1rem;
+    font-size:2rem;
+    padding:1rem 2rem;
+    outline:none;
+}
+
+.imageC{
+    text-align:center;
+    font-size:1.6rem;
+    color:#696969;
+    padding:3%;
+}
+
+.imageC label input{
+    display: none;
+}
+
+.imageC label{
+    cursor:pointer;
+}
+
+.imageC label #imageName{
+    color:green;
+}
+
+.entry select{
+    width:50%;
+    border:1px solid #696969;
+    border-radius:1rem;
+    font-size:2rem;
+    padding:1rem 2rem;
+    outline:none;
+}
+
+.entry select option{
+    font-size:2rem;
+    padding:1rem 2rem;
+}
+
+.containerScroll{
+    width:100%;
+    height:75%;
+    overflow-y:auto;
+}
+
+fieldset{
+    width:98%;
+    height:auto;
+    border-radius:1rem;
+    margin-top:3rem;
+}
+
+.campoImagen{
+    height:auto;
+    margin-bottom:2rem;
+}
+
+.legend{
+    font-size:2.2rem;
+    color:#575757;
+    padding:0 1rem;
+}
+
+.juegos{
+    height:25rem;
+    overflow-y:auto;
+    padding:2rem;
+}
+
+.gameEntry{
+    width:100%;
+    margin:0 auto;
+    display:flex;
+    justify-content:space-between;
+}
+
+.gameEntry p{
+    font-size:2rem;
+    color:#575757;
+    width:100%;
+    margin-left:2rem;
+}
+
+
+.botonContainer{
+    width:50%;
+    height:auto;
+    display:flex;
+    justify-content:space-between;
+}

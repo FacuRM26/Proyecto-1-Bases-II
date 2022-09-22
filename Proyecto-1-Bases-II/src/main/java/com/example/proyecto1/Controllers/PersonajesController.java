@@ -2,6 +2,7 @@ package com.example.proyecto1.Controllers;
 
 import com.example.proyecto1.Proyecto1Application;
 import com.example.proyecto1.Services.PersonajeService;
+import com.example.proyecto1.models.Juego;
 import com.example.proyecto1.models.Personaje;
 import com.example.proyecto1.Repositories.PersonajeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,13 +46,19 @@ public class PersonajesController {
     /*Ver ficha de personaje*/
     @GetMapping("/personaje")
     public ModelAndView personaje(){
-        ModelAndView mav = new ModelAndView(("PersonajeView"));
+        ModelAndView mav = new ModelAndView(("individual/PersonajeView"));
         return mav;
     }
 
     @PostMapping("/eliminarpersonaje")
     public String eliminarPersonaje(@RequestParam Integer id){
         personajeService.borrarPersonaje(id);
+        return "redirect:admin/personajes";
+    }
+
+    @PostMapping("/actualizarpersonaje")
+    public String actualizarPersonaje(@ModelAttribute Personaje personaje){
+        personajeService.actualizarPersonaje(personaje);
         return "redirect:admin/personajes";
     }
 }
