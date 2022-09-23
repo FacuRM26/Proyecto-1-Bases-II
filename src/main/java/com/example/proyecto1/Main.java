@@ -64,19 +64,6 @@ public class Main implements CommandLineRunner {
 
         //Obtener todos los personajes que pertenecen al juego con ese ID
 //        CallableStatement stmt= jdbcTemplate.getDataSource().getConnection().prepareCall("{?=call Fc_Consulta_Personajes_X_Juego(?)}");
-
-//        stmt.registerOutParameter(1,Types.REF_CURSOR);
-//        stmt.setInt(2, 4);
-//        stmt.execute();
-//        ResultSet cursor = stmt.getObject(1, ResultSet.class);
-//        String personajes="";
-//        while(cursor.next()) {
-//            personajes = personajes + cursor.getString("nombre")+", ";
-//            System.out.println("Id_Personaje = " + cursor.getString(1));
-//        }
-
-        //Obtener todos los personajes que pertenecen al juego con ese ID
-//        CallableStatement stmt= jdbcTemplate.getDataSource().getConnection().prepareCall("{?=call Fc_Consulta_Personajes_X_Juego(?)}");
 //        String result =getResultSet(stmt, 4);
 //        System.out.println(result.substring(0,result.length()-2));
 //
