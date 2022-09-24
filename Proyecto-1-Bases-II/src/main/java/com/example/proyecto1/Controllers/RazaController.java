@@ -5,6 +5,7 @@ import com.example.proyecto1.Repositories.RazaRepository;
 import com.example.proyecto1.Services.PersonajeService;
 import com.example.proyecto1.Services.RazaService;
 import com.example.proyecto1.models.Juego;
+import com.example.proyecto1.models.Personaje;
 import com.example.proyecto1.models.Raza;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -22,6 +23,8 @@ public class RazaController {
     private JdbcTemplate jdbcTemplate;
     @Autowired
     RazaService razaService;
+    @Autowired
+    PersonajeService personajeService;
     public static void main(String[] args) {
         SpringApplication.run(Proyecto1Application.class, args);
     }
@@ -31,7 +34,7 @@ public class RazaController {
         List<Raza> razas = razaService.obtenerRazas();
         razas.forEach(System.out::println);
         ModelAndView mav = new ModelAndView(("MainView"));
-        mav.addObject("item", razas);
+        mav.addObject("raza", razas);
         return mav;
     }
 
@@ -44,8 +47,10 @@ public class RazaController {
 
     /*Crear una raza*/
     @PostMapping("/guardarraza")
-    public String guardarRaza(@ModelAttribute Raza raza){
+    public String guardarRaza(@ModelAttribute Raza raza, @RequestParam String juegos){
         razaService.guardarRaza(raza);
+        System.out.println(juegos);
+        razaService.addGames(raza.getId(),juegos);
         return "redirect:admin/razas";
     }
 
@@ -59,5 +64,19 @@ public class RazaController {
     public String actualizarRaza(@ModelAttribute Raza raza){
         razaService.actualizarRaza(raza);
         return "redirect:admin/razas";
+    }
+
+    @PostMapping("/ficharaza")
+    public ModelAndView mostrarFicha(@RequestParam Integer id) throws Exception {
+        ModelAndView mav = new ModelAndView(("individual/RazaView"));
+        Raza raza = razaService.buscarRaza(id);
+        mav.addObject("dato",raza);
+        String juegos = razaService.getJuegosById(id);
+        String personajes = razaService.getPersonajesById(id);
+        mav.addObject("dato",raza);
+        mav.addObject("juego",juegos);
+        mav.addObject("raza",personajes);
+
+        return mav;
     }
 }

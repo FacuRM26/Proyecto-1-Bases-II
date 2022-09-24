@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/cardStyles.css">
+    <link rel="stylesheet" href="css/cardStyle.css">
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/92129222ce.js" crossorigin="anonymous"></script>
     <title>Document</title>
@@ -17,14 +17,16 @@
             <h1>Ficha de Personaje</h1>
             <div class="add">+</div>
         </div>
+        <input type="text" th:value="${juego}" id="games">
+        <input type="text" th:value="${raza}" id="razas">
         <div class="body">
             <div class="left">
-                <div class="item">Nombre: LINK</div>
-                <div class="item">Genero: Machista opresor</div>
-                <div class="item">Ciudad: SODOMA</div>
-                <div class="item">Familia: No tiene</div>
-                <div class="item">Enemigo: No</div>
-                <div class="item">Raza: Machista</div>
+                <div class="item" th:text="'Nombre: ' + ${dato.getNombre()}"></div>
+                <div class="item" th:text="'Genero: ' + ${dato.getGenero()}"></div>
+                <div class="item" th:text="'Ciudad: ' + ${dato.getCiudad_residencia()}"></div>
+                <div class="item" th:text="'Familia: ' + ${dato.getFamilia()}"></div>
+                <div class="item" th:text="'Enemigo: ' + ${dato.getEnemigoS()}"></div>
+                <div class="item" th:text="'Raza: '"></div>
             </div>
             <div class="right">
                 <img src="https://assets.reedpopcdn.com/-1489327919868.jpg/BROK/thumbnail/1200x1200/quality/100/-1489327919868.jpg" alt="">
@@ -32,15 +34,10 @@
         </div>
         <div class="footer">
             <h1>Juegos</h1>
-            <div class="juegos">
-                <div class="item"><i class="fa-solid fa-gamepad"></i>Juego 1</div>
-                <div class="item"><i class="fa-solid fa-gamepad"></i>Juego 2</div>
-                <div class="item"><i class="fa-solid fa-gamepad"></i>Juego 3</div>
-                <div class="item"><i class="fa-solid fa-gamepad"></i>Juego 4</div>
-                <div class="item"><i class="fa-solid fa-gamepad"></i>Juego 5</div>
-                <div class="item"><i class="fa-solid fa-gamepad"></i>Juego 6</div>
+            <div class="juegos" id="juegosList">
             </div>
         </div>
     </div>
+    <script src="js/showGames.js"></script>
 </body>
 </html>

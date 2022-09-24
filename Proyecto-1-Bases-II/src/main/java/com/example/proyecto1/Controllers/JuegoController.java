@@ -28,7 +28,7 @@ public class JuegoController {
     public ModelAndView juego(){
         List<Juego> juegos = juegoService.obtenerJuegos();
         ModelAndView mav = new ModelAndView(("MainView"));
-        mav.addObject("item", juegos);
+        mav.addObject("juego", juegos);
         return mav;
     }
 
@@ -57,4 +57,15 @@ public class JuegoController {
         juegoService.actualizarJuego(juego);
         return "redirect:admin/juegos";
     }
+
+    @PostMapping("/fichajuego")
+    public ModelAndView mostrarFicha(@RequestParam Integer id) throws Exception {
+        ModelAndView mav = new ModelAndView(("individual/JuegoView"));
+        Juego juego = juegoService.buscarJuego(id);
+        String personajes = juegoService.getPersonajesById(id);
+        mav.addObject("dato",juego);
+        mav.addObject("personajes",personajes);
+        return mav;
+    }
+
 }

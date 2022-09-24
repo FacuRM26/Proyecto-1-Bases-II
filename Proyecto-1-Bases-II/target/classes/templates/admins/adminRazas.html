@@ -6,7 +6,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/adminT.css">
+    <link rel="stylesheet" href="../css/admin.css">
     <link rel="stylesheet" href="../css/normalize.css">
     <script src="https://kit.fontawesome.com/92129222ce.js" crossorigin="anonymous"></script>
 </head>
@@ -40,7 +40,7 @@
                             Juegos
                         </legend>
                         <div class="gameEntry" th:each="juego:${item2}">
-                            <input type="checkbox" name="" value="juegos">
+                            <input type="checkbox" name="juegos" th:value="${juego.getNombre()}">
                             <p th:text="${juego.getNombre()}"></p>
                         </div>
 
@@ -93,6 +93,6 @@
             </div>
         </div>
     </div>
-    <script src="../js/script.js"></script>
+    <script src="../js/scripts.js"></script>
 </body>
 </html>

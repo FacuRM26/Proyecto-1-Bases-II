@@ -73,6 +73,11 @@ public class Personaje {
         Raza_id = razaid;
     }
 
+    public String getEnemigoS() {
+        if(Enemigo == 1)
+            return "SI";
+        return "NO";
+    }
     @Override
     public String toString() {
         return "Personaje{" +

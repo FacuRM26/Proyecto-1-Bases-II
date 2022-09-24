@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/cardStyles.css">
+    <link rel="stylesheet" href="css/cardStyle.css">
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/92129222ce.js" crossorigin="anonymous"></script>
     <title>Document</title>
@@ -14,25 +14,26 @@
 <body>
     <div class="container">
         <div class="head">
-            <h1>Ficha de Personaje</h1>
+            <h1>Ficha de Raza</h1>
             <div class="add">+</div>
         </div>
+        <input type="text" th:value="${juego}" id="games">
+        <input type="text" th:value="${raza}" id="razas">
         <div class="body2">
-            <div class="item">Nombre: LINK</div>
-            <div class="item">HABITAT: Machista opresor</div>
-            <div class="item">ETIMOLOGIA: SODOMA</div>
+            <div class="item" th:text="'Nombre: ' + ${dato.getNombre()}">Nombre: </div>
+            <div class="item" th:text="'HABITAT: ' + ${dato.getHabitat()}">HABITAT:  </div>
+            <div class="item" th:text="'ETIMOLOGIA: ' + ${dato.getEtimologia()}">ETIMOLOGIA: </div>
         </div>
         <div class="footer">
-            <h1>Juegos</h1>
-            <div class="juegos">
-                <div class="item"><i class="fa-solid fa-gamepad"></i>Juego 1</div>
-                <div class="item"><i class="fa-solid fa-gamepad"></i>Juego 2</div>
-                <div class="item"><i class="fa-solid fa-gamepad"></i>Juego 3</div>
-                <div class="item"><i class="fa-solid fa-gamepad"></i>Juego 4</div>
-                <div class="item"><i class="fa-solid fa-gamepad"></i>Juego 5</div>
-                <div class="item"><i class="fa-solid fa-gamepad"></i>Juego 6</div>
+            <h1>Juegos con esta raza</h1>
+            <div class="juegos" id="juegosList">
+            </div>
+            <br/>
+            <h1>Personajes de esta raza</h1>
+            <div class="juegos" id="razaList">
             </div>
         </div>
     </div>
+    <script src="js/showGames.js"></script>
 </body>
 </html>

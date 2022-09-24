@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/cardStyles.css">
+    <link rel="stylesheet" href="css/cardStyle.css">
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/92129222ce.js" crossorigin="anonymous"></script>
     <title>Document</title>
@@ -14,24 +14,26 @@
 <body>
     <div class="container">
         <div class="head">
-            <h1>Ficha de Personaje</h1>
+            <h1>Ficha de Juego</h1>
             <div class="add">+</div>
         </div>
+        <input type="text" th:value="${dato.getConsolas()}" id="games">
+        <input type="text" th:value="${personajes}" id="razas">
         <div class="body2">
-            <div class="item">Nombre: Zelda</div>
-            <div class="item">Fecha publicación; 13/10/2002</div>
-            <div class="item">Linea cronologica: Mas o menos</div>
+            <div class="item" th:text="'Nombre: ' + ${dato.getNombre()}">Nombre: Zelda</div>
+            <div class="item" th:text="'Fecha Publicación: ' + ${dato.getFecha_publicacion()}">Fecha publicación; 13/10/2002</div>
+            <div class="item" th:text="'Linea Cronologica: ' + ${dato.getLinea_cronologica()}">Linea cronologica: Mas o menos</div>
         </div>
         <div class="footer">
-            <h1>Consolas</h1>
-            <div class="juegos">
-                <div class="item"><i class="fa-solid fa-check"></i>Consola 1</div>
-                <div class="item"><i class="fa-solid fa-check"></i>Consola 2</div>
-                <div class="item"><i class="fa-solid fa-check"></i>Consola 3</div>
-                <div class="item"><i class="fa-solid fa-check"></i>Consola 4</div>
+            <h1>Personajes</h1>
+            <div class="juegos" id="razaList">
+            </div>
 
+            <h1>Consolas</h1>
+            <div class="juegos" id="juegosList">
             </div>
         </div>
     </div>
+    <script src="js/showGames.js"></script>
 </body>
 </html>
