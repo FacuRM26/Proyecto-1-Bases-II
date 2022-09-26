@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <script src="https://kit.fontawesome.com/92129222ce.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!--Añadir personaje-->
+<div class="panelV" id="panel">
+    <div class="addItem">
+        <h1>Actualizar personaje</h1>
+        <div class="containerScroll">
+            <form action="#" th:action="@{/actualizarjuego}" th:object="${Juego}" method="post" name="Actualizar">
+                <fieldset>
+                    <legend class="legend">Información del personaje</legend>
+                    <div class="entry">
+                        <label>Nombre: </label>
+                        <input type="text" autocomplete="off" for="Agregar" name="nombre" th:value="${dato.getNombre()}">
+                    </div>
+                    <div class="entry">
+                        <label>Consolas: </label>
+                        <input type="text" autocomplete="off"  for="Agregar" name="consolas" th:value="${dato.getConsolas()}">
+                    </div>
+                    <div class="entry">
+                        <label>fecha_publicacion: </label>
+                        <input type="date" autocomplete="off" for="Agregar" name="fecha_publicacion" th:value="${dato.getFecha_publicacion()}">
+                    </div>
+                    <div class="entry">
+                        <label>linea_cronologica: </label>
+                        <input type="text" autocomplete="off" for="Agregar" name="linea_cronologica" th:value="${dato.getLinea_cronologica()}">
+                    </div>
+                </fieldset>
+                </div>
+                <div class="botonContainer">
+                    <a class="button eliminar" th:href="@{/admin/juegos}">Cancelar</a>
+                    <button type="submit" class="button add" for="Actualizar" th:value="${dato.getId()}" name="id">Modificar</button>
+                </div>
+            </form>
+        </div>
+
+</div>
+
+<script src="../js/script.js"></script>
+</body>
+</html>

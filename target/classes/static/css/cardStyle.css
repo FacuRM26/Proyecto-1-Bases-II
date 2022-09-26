@@ -1,0 +1,125 @@
+body{
+    background-color:#04182B;
+}
+
+.container{
+    width:80%;
+    height:auto;
+    margin:0 auto;
+    background-color:#02344A;
+    display:flex;
+    flex-direction:column;
+}
+
+.head{
+    width:100%;
+    height:10vh;
+    border-bottom:4px solid #04182B;
+    display:flex;
+    justify-content:space-between;
+    padding:.5rem 2rem;
+    align-items:center;
+    margin-bottom:3rem;
+}
+
+h1{
+    font-size:4rem;
+    color:#ffffff;
+    margin-top:3rem;
+}
+
+.add{
+    width:5rem;
+    height:5rem;
+    border-radius:50%;
+    font-size:4rem;
+    font-weight:900;
+    color:#ffffff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-color:#4C962A;
+    cursor:pointer;
+}
+
+.body{
+    width:100%;
+    height:auto;
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:3rem;
+}
+
+.body2{
+    width:100%;
+    height:auto;
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:3rem;
+    flex-direction:column;
+    padding:.5rem 2rem;
+}
+
+.left{
+    width:55%;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-evenly;
+    padding:.5rem 2rem;
+}
+
+.right{
+    width:45%;
+    height:100%;
+    padding:2rem 4rem;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.right img{
+    max-width:100%;
+    max-height:100%;
+    border-radius:2rem;
+}
+
+.footer{
+    width:100%;
+    height:auto;
+    padding:.5rem 2rem;
+}
+
+.item{
+    width:100%;
+    padding:1.8rem 2rem;
+    background-color:#034866;
+    border-radius:2rem;
+    font-size:3rem;
+    color:#ffffff;
+    margin:2rem 0;
+    display:flex;
+    align-items:center;
+}
+
+.juegosList > item{
+    margin:1.5rem 0;
+}
+
+.item p{
+    display:inline-block;
+    padding:0;
+    margin:0;
+}
+
+#games{
+    display:none;
+}
+
+#razas{
+    display:none;
+}
+
+.item > i{
+    margin-right:2rem;
+}

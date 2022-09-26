@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <script src="https://kit.fontawesome.com/92129222ce.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body id="body">
+    <!--Cambiar fondo -->
+    <div class="panel" id="panel">
+        <div class="imagesContainer">
+            <img src="img/fondo1.jpg" onclick="selectBackground('img/fondo1.jpg')">
+            <img src="img/fondo2.jpg" onclick="selectBackground('img/fondo2.jpg')">
+            <img src="img/fondo3.png" onclick="selectBackground('img/fondo3.png')">
+            <img src="img/fondo4.jpg" onclick="selectBackground('img/fondo4.jpg')">
+            <img src="img/fondo5.jpg" onclick="selectBackground('img/fondo5.jpg')">
+            <img src="img/fondo6.jpg" onclick="selectBackground('img/fondo6.jpg')">
+        </div>
+    </div>
+
+    <!-- Menu -->
+    <div class="menu">
+        <div class="enlaces">
+            <a th:href="@{/personajes}">Personajes</a>
+            <a th:href="@{/razas}">Razas</a>
+            <a th:href="@{/juegos}">Juegos</a>
+        </div>
+        <div class="buttons">
+            <i class="fa-solid fa-gear" onclick="configButton()"></i>
+            <a th:href="@{/admin/personajes}">Login</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="ficha" th:each=" Dato : ${personaje}">
+            <form action="#" th:action="@{/fichapersonaje}" th:object="${Personaje}" method="post" name="ver">
+                <input type="text" name="id" class="botonInvisible" th:value="${Dato.getId()}">
+                <input type="submit" class="add" for="ver" value="?">
+            </form>
+                <div class="header">
+
+                </div>
+                <div class="name">
+                    <p th:text="${Dato.getNombre()}"></p>
+                </div>
+        </div>
+        <div class="ficha" th:each=" Dato : ${raza}">
+            <form action="#" th:action="@{/ficharaza}" th:object="${Personaje}" method="post" name="ver">
+                <input type="text" name="id" class="botonInvisible" th:value="${Dato.getId()}">
+                <input type="submit" class="add" for="ver" value="?">
+            </form>
+            <div class="header">
+
+            </div>
+            <div class="name">
+                <p th:text="${Dato.getNombre()}"></p>
+            </div>
+        </div>
+        <div class="ficha" th:each=" Dato : ${juego}">
+            <form action="#" th:action="@{/fichajuego}" th:object="${Personaje}" method="post" name="ver">
+                <input type="text" name="id" class="botonInvisible" th:value="${Dato.getId()}">
+                <input type="submit" class="add" for="ver" value="?">
+            </form>
+            <div class="header">
+
+            </div>
+            <div class="name">
+                <p th:text="${Dato.getNombre()}"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/scripts.js"></script>
+</body>
+</html>
+
+
+
+
+

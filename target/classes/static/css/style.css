@@ -1,0 +1,193 @@
+
+body {
+   font-family: 'Lato', sans-serif;
+   font-size: 1.6rem;
+   line-height: 2;
+   background-image: url("https://cutewallpaper.org/27/breath-of-the-wild-wallpaper-minimalist/pin-on-top-reddit-wallpapers.png");
+   background-position:center center;
+   background-size:cover;
+}
+
+
+/**Panel de cambio de fondo**/
+
+.panel{
+    z-index:100;
+    width:100%;
+    height:100vh;
+    position:fixed;
+    background-color:#010103B5;
+    display:none;
+    justify-content:center;
+    align-items:center;
+}
+
+.panel .imagesContainer{
+    width:60%;
+    height:55%;
+    background-color:#F4F0F5;
+    border-radius:1rem;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-evenly;
+    align-items:center;
+}
+
+.imagesContainer img{
+    width:30%;
+    height:40%;
+    max-width:30%;
+    max-height:40%;
+    border-radius:1rem;
+    cursor:pointer;
+    transition:all ease .5s;
+}
+
+.imagesContainer img:hover{
+    width:31%;
+    height:41%;
+    max-width:31%;
+    max-height:41%;
+}
+
+
+
+/** Menu **/
+.menu{
+    width:100%;
+    padding:0 4%;
+    height:9vh;
+    background-color:#000000B7;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.buttons > a{
+    padding:0 5rem;
+    border:2px solid #ffffff;
+    font-size:2.5rem;
+    border-radius:1rem;
+    color:#ffffff;
+    text-decoration:none;
+    font-family: 'Amatic SC', cursive;
+}
+
+.enlaces{
+    width: 40%;
+    height: auto;
+    display:flex;
+    justify-content:space-between;
+}
+
+.buttons{
+    width:12%;
+    height:70%;
+    align-items:center;
+    display:flex;
+    justify-content:space-between;
+}
+
+.enlaces a{
+    font-size:4rem;
+    color:#ffffff;
+    text-decoration:none;
+    font-family: 'Amatic SC', cursive;
+}
+
+.buttons i{
+    font-size:3rem;
+    color:#ffffff;
+    cursor:pointer;
+}
+
+
+.enlaces a:hover{
+    text-shadow: 1px 5px 14px rgba(0,161,218,1);
+}
+
+/** Contenedor de fichas **/
+
+.container{
+    width:100%;
+    height:91vh;
+    overflow-y:auto;
+    display:flex;
+    justify-content:center;
+    flex-wrap: wrap;
+    background-color:#00000096;
+    padding:1% 2%;
+}
+
+.ficha{
+    width: 16%;
+    height: 36rem;
+    border-radius:2rem;
+    margin: 2%;
+    display:flex;
+    flex-direction:column;
+    position:relative;
+    cursor:pointer;
+}
+
+/*Partes de las fichas*/
+
+.add{
+    width:4rem;
+    height:4rem;
+    background-color:#29A2FF;
+    border-radius:50%;
+    border:none;
+    position:absolute;
+    font-size:3.5rem;
+    font-weight:800;
+    margin-left:-1.5rem;
+    margin-top:-2rem;
+    color:#ffffff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    transition:ease all .5s;
+}
+
+.add:hover{
+    width:4.5rem;
+    height:4.5rem;
+    transition:ease all .5s;
+}
+
+
+.header{
+    width:100%;
+    height:77%;
+    background-color:#ffffff;
+    border-top-right-radius:2rem;
+    border-top-left-radius:2rem;
+}
+
+.name{
+    background-color:#606E8A;
+    width:100%;
+    height:23%;
+    border-bottom-right-radius:2rem;
+    border-bottom-left-radius:2rem;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
+
+.name p{
+    align-items:center;
+    font-family: 'Amatic SC', cursive;
+    font-size:3.7rem;
+    color:#ffffff;
+    line-height:3.2rem;
+    text-align:center;
+    padding:1rem;
+}
+
+.botonInvisible{
+    display:none;
+}
