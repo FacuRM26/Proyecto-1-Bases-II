@@ -1,6 +1,8 @@
 package com.example.proyecto1.models;
 
 import javax.persistence.*;
+import java.sql.Date;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "Juego")
@@ -9,7 +11,8 @@ public class Juego {
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String nombre,consolas,fecha_publicacion,linea_cronologica;
+    private String nombre,consolas,linea_cronologica;
+    private Date fecha_publicacion;
 
     public int getId() {
         return id;
@@ -35,11 +38,11 @@ public class Juego {
         this.consolas = consolas;
     }
 
-    public String getFecha_publicacion() {
+    public Date getFecha_publicacion() {
         return fecha_publicacion;
     }
 
-    public void setFecha_publicacion(String fecha_publicacion) {
+    public void setFecha_publicacion(Date fecha_publicacion) {
         this.fecha_publicacion = fecha_publicacion;
     }
 

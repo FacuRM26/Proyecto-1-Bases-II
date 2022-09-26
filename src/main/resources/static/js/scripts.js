@@ -7,3 +7,8 @@ function selectBackground(direccion){
 function configButton(){
     document.getElementById("panel").style.display = "flex";
 }
+
+function hideButton(){
+    document.getElementById("panel").style.display = "none";
+}
+

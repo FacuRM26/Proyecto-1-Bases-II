@@ -10,12 +10,12 @@ public class Personaje {
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String nombre;
+    private String Nombre;
     private String Genero;
     private String Ciudad_residencia;
     private String Familia;
     private int Enemigo;
-    private int raza_id;
+    private int Raza_id;
 
     public int getId() {
         return id;
@@ -26,11 +26,11 @@ public class Personaje {
     }
 
     public String getNombre() {
-        return nombre;
+        return Nombre;
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        this.Nombre = nombre;
     }
 
     public String getGenero() {
@@ -66,23 +66,28 @@ public class Personaje {
     }
 
     public int getRazaid() {
-        return raza_id;
+        return Raza_id;
     }
 
     public void setRazaid(int razaid) {
-        raza_id = razaid;
+        Raza_id = razaid;
     }
 
+    public String getEnemigoS() {
+        if(Enemigo == 1)
+            return "SI";
+        return "NO";
+    }
     @Override
     public String toString() {
         return "Personaje{" +
                 "id=" + id +
-                ", nombre='" + nombre + '\'' +
+                ", nombre='" + Nombre + '\'' +
                 ", Genero='" + Genero + '\'' +
                 ", Ciudad_residencia='" + Ciudad_residencia + '\'' +
                 ", Familia='" + Familia + '\'' +
                 ", Enemigo=" + Enemigo +
-                ", Raza_id=" + raza_id +
+                ", Raza_id=" + Raza_id +
                 '}';
     }
 }

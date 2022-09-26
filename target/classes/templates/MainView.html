@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/normalize.css">
     <script src="https://kit.fontawesome.com/92129222ce.js" crossorigin="anonymous"></script>
     <title>Document</title>
@@ -17,36 +17,62 @@
     <!--Cambiar fondo -->
     <div class="panel" id="panel">
         <div class="imagesContainer">
-            <img src="https://wallpapers.com/images/featured/zelda-rkp03okh2d43ik06.jpg" onclick="selectBackground('https://wallpapers.com/images/featured/zelda-rkp03okh2d43ik06.jpg')">
-            <img src="https://i.pinimg.com/originals/f6/6b/a4/f66ba4b259f5f14c9f94430e588a85ba.jpg" onclick="selectBackground('https://i.pinimg.com/originals/f6/6b/a4/f66ba4b259f5f14c9f94430e588a85ba.jpg')">
-            <img src="https://cutewallpaper.org/27/breath-of-the-wild-wallpaper-minimalist/pin-on-top-reddit-wallpapers.png" onclick="selectBackground('https://cutewallpaper.org/27/breath-of-the-wild-wallpaper-minimalist/pin-on-top-reddit-wallpapers.png')">
-            <img src="https://www.xtrafondos.com/wallpapers/the-legend-of-zelda-breath-of-the-wild-4066.jpg" onclick="selectBackground('https://www.xtrafondos.com/wallpapers/the-legend-of-zelda-breath-of-the-wild-4066.jpg')">
-            <img src="https://www.pixel4k.com/wp-content/uploads/2019/10/the-legend-of-zelda_1572370041.jpg" onclick="selectBackground('https://www.pixel4k.com/wp-content/uploads/2019/10/the-legend-of-zelda_1572370041.jpg')">
-            <img src="https://gameranx.com/wp-content/uploads/2016/03/The-Legend-of-Zelda-Twilight-Princess-HD-1080-Wallpaper-1.jpg" onclick="selectBackground('https://gameranx.com/wp-content/uploads/2016/03/The-Legend-of-Zelda-Twilight-Princess-HD-1080-Wallpaper-1.jpg')">
+            <img src="img/fondo1.jpg" onclick="selectBackground('img/fondo1.jpg')">
+            <img src="img/fondo2.jpg" onclick="selectBackground('img/fondo2.jpg')">
+            <img src="img/fondo3.png" onclick="selectBackground('img/fondo3.png')">
+            <img src="img/fondo4.jpg" onclick="selectBackground('img/fondo4.jpg')">
+            <img src="img/fondo5.jpg" onclick="selectBackground('img/fondo5.jpg')">
+            <img src="img/fondo6.jpg" onclick="selectBackground('img/fondo6.jpg')">
         </div>
     </div>
 
     <!-- Menu -->
     <div class="menu">
         <div class="enlaces">
-            <a href="#">Personajes</a>
-            <a href="#">Razas</a>
-            <a href="#">Juegos</a>
-            <a href="#">Mis FIchas</a>
+            <a th:href="@{/personajes}">Personajes</a>
+            <a th:href="@{/razas}">Razas</a>
+            <a th:href="@{/juegos}">Juegos</a>
         </div>
         <div class="buttons">
             <i class="fa-solid fa-gear" onclick="configButton()"></i>
-            <a href="#">Login</a>
+            <a th:href="@{/admin/personajes}">Login</a>
         </div>
     </div>
     <div class="container">
-        <div class="ficha" th:each=" Personaje : ${item}">
-            <spam class="add">+</spam>
+        <div class="ficha" th:each=" Dato : ${personaje}">
+            <form action="#" th:action="@{/fichapersonaje}" th:object="${Personaje}" method="post" name="ver">
+                <input type="text" name="id" class="botonInvisible" th:value="${Dato.getId()}">
+                <input type="submit" class="add" for="ver" value="?">
+            </form>
+                <div class="header">
+
+                </div>
+                <div class="name">
+                    <p th:text="${Dato.getNombre()}"></p>
+                </div>
+        </div>
+        <div class="ficha" th:each=" Dato : ${raza}">
+            <form action="#" th:action="@{/ficharaza}" th:object="${Personaje}" method="post" name="ver">
+                <input type="text" name="id" class="botonInvisible" th:value="${Dato.getId()}">
+                <input type="submit" class="add" for="ver" value="?">
+            </form>
             <div class="header">
 
             </div>
             <div class="name">
-                <p th:text="${Personaje.getNombre()}"></p>
+                <p th:text="${Dato.getNombre()}"></p>
+            </div>
+        </div>
+        <div class="ficha" th:each=" Dato : ${juego}">
+            <form action="#" th:action="@{/fichajuego}" th:object="${Personaje}" method="post" name="ver">
+                <input type="text" name="id" class="botonInvisible" th:value="${Dato.getId()}">
+                <input type="submit" class="add" for="ver" value="?">
+            </form>
+            <div class="header">
+
+            </div>
+            <div class="name">
+                <p th:text="${Dato.getNombre()}"></p>
             </div>
         </div>
     </div>
@@ -54,3 +80,8 @@
     <script src="js/scripts.js"></script>
 </body>
 </html>
+
+
+
+
+

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/adminQ.css">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <script src="https://kit.fontawesome.com/92129222ce.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!--Añadir personaje-->
+    <div class="panel" id="panel">
+        <div class="addItem">
+            <h1>Agregar personaje</h1>
+            <div class="containerScroll">
+                <form action="#" th:action="@{/guardarpersonaje}" th:object="${Personaje}" method="post" name="Agregar">
+                    <fieldset>
+                        <legend class="legend">Información del personaje</legend>
+                        <div class="entry">
+                            <label>Nombre: </label>
+                            <input type="text" autocomplete="off" for="Agregar" name="nombre">
+                        </div>
+                        <div class="entry">
+                            <label>Genero: </label>
+                            <input type="text" autocomplete="off"  for="Agregar" name="Genero">
+                        </div>
+                        <div class="entry">
+                            <label>Ciudad: </label>
+                            <input type="text" autocomplete="off" for="Agregar" name="Ciudad_residencia">
+                        </div>
+                        <div class="entry">
+                            <label for="">Familia: </label>
+                            <input type="text" autocomplete="off" for="Agregar" name="Familia">
+                        </div>
+                        <div class="entry">
+                            <label for="">Raza: </label>
+                            <select for="Agregar" name="razaid" class="sel">
+                                <option th:each="Raza : ${item2}" th:value="${Raza.getId()}"><p th:text="${Raza.getNombre()}"></p></option>
+                            </select>
+                        </div>
+                        <div class="entry">
+                            <label for="">Enemigo: </label>
+                            <select for="Agregar" name="enemigo" class="sel">
+                                <option value="1"><p>SI</p></option>
+                                <option value="0"><p>NO</p></option>
+                            </select>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="juegos">
+                        <legend class="legend">
+                            Juegos
+                        </legend>
+                        <div class="gameEntry" th:each="juego:${item3}">
+                            <input type="checkbox" name="" value="juegos">
+                            <p th:text="${juego.getNombre()}"></p>
+                        </div>
+
+                    </fieldset>
+
+                    <fieldset class="campoImagen">
+                        <legend class="legend">
+                            Agregar Imagen
+                        </legend>
+
+                    </fieldset>
+                </div>
+                <div class="botonContainer">
+                    <div class="button eliminar" onclick="hideButton()">Cancelar</div>
+                    <input type="submit" class="button add" for="Agregar" value="Agregar">
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="head">
+        <h1>Administrador</h1>
+        <div class="menu">
+            <a th:href="@{/admin/personajes}">Personajes</a>
+            <a th:href="@{/admin/razas}">Razas</a>
+            <a th:href="@{/admin/juegos}">Juegos</a>
+            <a class="log button" th:href="@{/personajes}">Log out</a>
+        </div>
+    </div>
+
+    <div class="opciones">
+        <div class="buscar">
+            <label for="">Buscar Personage: </label><input type="text " placeholder="Ingrese el nombre">
+        </div>
+        <div class="controles">
+            <!--<i class="fa-solid fa-border-all"></i>
+            <i class="fa-solid fa-list"></i>-->
+            <div class="button add" onclick="configButton()">Añadir</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="register" th:each="Dato : ${item}">
+            <div class="registerInfo">
+                <p th:text="'Nombre: ' + ${Dato.getNombre()}"></p>
+                <p th:text="'Genero: ' + ${Dato.getGenero()}"></p>
+                <p th:text="'Ciudad: ' + ${Dato.getCiudad_residencia()}"></p>
+                <p th:text="'Familia: ' + ${Dato.getFamilia()}"></p>
+            </div>
+            <div class="adminB">
+                <button class="button editar" th:value="${Dato.getId()}">Editar</button>
+                <form th:action="@{/eliminarpersonaje}" th:object="${Personaje}" method="post" name="eliminar">
+                    <button type="submit" for="eliminar" name="id" class="button eliminar" th:value="${Dato.getId()}">Eliminar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="../js/script.js"></script>
+</body>
+</html>
